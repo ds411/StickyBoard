@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head th:fragment="head">
+	<link rel="stylesheet" href="../static/css/site.css"/>
+</head>
+<body>
+	<div th:fragment="navigation">
+	<nav id="navbar">
+		<span sec:authorize="!isFullyAuthenticated()">
+			<form th:action="@{/login}" method="POST" id="login-form">
+				<input type="text" name="username"/>
+				<input type="password" name="password"/>
+				<input type="submit" name="submit" value="Log in"/>
+			</form>
+			<a th:href="@{/register}">Sign Up</a>
+		</span>
+		<span sec:authorize="isFullyAuthenticated()">
+			<a sec:authentication="name">User</a>
+		</span>
+	</nav>
+	</div>
+</body>
+</html>

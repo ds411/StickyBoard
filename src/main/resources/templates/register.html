@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>Home Page</title>
+	<th:block th:include="fragments/base :: head"></th:block>
+</head>
+<body>
+	<th:block th:include="fragments/base :: navigation"></th:block>
+	<p th:each="error : ${errors}" th:text="${error}">
+	</p>
+	<form th:action="@{/register}" th:object="${siteUser}" method="POST" id="registration-form">
+		<p><input type="text" th:field="*{registerUsername}" placeholder="Username"/></p>
+		<p><input type="password" th:field="*{registerPassword}" placeholder="Password"/></p>
+		<p><input type="password" th:field="*{registerConfirmPassword}" placeholder="Confirm Password"/></p>
+		<p><input type="submit" value="submit"/></p>
+	</form>
+</body>
+</html>
